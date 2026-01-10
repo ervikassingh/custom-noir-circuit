@@ -1,0 +1,21 @@
+# Noir build artifacts
+target/
+proofs/
+contracts/
+
+# Nargo cache
+.nargo/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
