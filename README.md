@@ -51,13 +51,6 @@ nargo compile
 nargo execute
 ```
 
-### Barretenberg generate proof
-
-```bash
-# Generates a proof using the circuit and witness
-bb prove -b ./target/custom_noir_circuit.json -w ./target/custom_noir_circuit.gz -o ./proofs
-```
-
 ### Barretenberg generate verification key
 
 ```bash
@@ -65,11 +58,18 @@ bb prove -b ./target/custom_noir_circuit.json -w ./target/custom_noir_circuit.gz
 bb write_vk -b ./target/custom_noir_circuit.json -o ./verification_keys
 ```
 
+### Barretenberg generate proof
+
+```bash
+# Generates a proof using the circuit, witness and verification key
+bb prove -b ./target/custom_noir_circuit.json -w ./target/custom_noir_circuit.gz -k ./verification_keys/vk -o ./proofs
+```
+
 ### Barretenberg verify proof
 
 ```bash
 # Verifies the proof using the verification key
-bb verify -k ./verification_keys/vk -p ./proofs/proof
+bb verify -k ./verification_keys/vk -p ./proofs/proof -i ./proofs/public_inputs
 ```
 
 ## Resources

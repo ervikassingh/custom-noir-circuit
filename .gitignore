@@ -1,7 +1,8 @@
 # Noir build artifacts
 target/
-proofs/
+out/
 verification_keys/
+proofs/
 contracts/
 
 # Nargo cache
