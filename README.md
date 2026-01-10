@@ -58,6 +58,20 @@ nargo execute
 bb write_vk -b ./target/custom_noir_circuit.json -o ./verification_keys
 ```
 
+### Barretenberg generate verification key using keccak for smart contracts
+
+```bash
+# Generates a verification key to verify the proof
+bb write_vk --oracle_hash keccak -b ./target/custom_noir_circuit.json -o ./verification_keys
+```
+
+### Barretenberg generate solidity verifier smart contract
+
+```bash
+# Generates a verification key to verify the proof
+bb write_solidity_verifier -k ./verification_keys/vk -o ./contracts/Verifier.sol
+```
+
 ### Barretenberg generate proof
 
 ```bash
