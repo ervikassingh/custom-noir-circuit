@@ -1,6 +1,6 @@
 [package]
 name = "custom_noir_circuit"
 type = "bin"
-authors = [""]
+authors = ["ervikassingh"]
 
 [dependencies]

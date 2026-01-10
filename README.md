@@ -4,13 +4,14 @@ This repository is used to test and learn Noir circuits for zero-knowledge proof
 
 ## Overview
 
-Noir is a domain-specific language for creating zero-knowledge proofs. This project contains custom circuits to experiment with and understand ZKP concepts.
+Noir is a domain-specific language for creating zero-knowledge proofs. This project contains custom circuits to experiment with and understand ZKP concepts. The project uses Nargo for circuit development and Barretenberg as the zero-knowledge proof system backend for proof generation and verification.
 
 ## Project Structure
 
 ```
 .
 ├── Nargo.toml          # Noir project configuration
+├── Prover.toml         # Prover configuration
 └── src/
     └── main.nr         # Main circuit implementation
 ```
@@ -20,29 +21,55 @@ Noir is a domain-specific language for creating zero-knowledge proofs. This proj
 ### Prerequisites
 
 - [Nargo](https://noir-lang.org/getting_started/installation/) - The Noir package manager
-
-### Building
-
-```bash
-nargo build
-```
+- [Barretenberg](https://github.com/AztecProtocol/barretenberg) - Zero-knowledge proof system backend
 
 ### Testing
 
 ```bash
+# Runs all tests
 nargo test
 ```
 
-### Proving
+### Checking
 
 ```bash
-nargo prove
+# Checks circuit for any errors
+nargo check
 ```
 
-### Verifying
+### Compile
 
 ```bash
-nargo verify
+# Compiles circuit to ACIR (Abstract Circuit Intermediate Representation)
+nargo compile
+```
+
+### Executing
+
+```bash
+# Compiles circuit and creates a witness
+nargo execute
+```
+
+### Barretenberg generate proof
+
+```bash
+# Generates a proof using the circuit and witness
+bb prove -b ./target/custom_noir_circuit.json -w ./target/custom_noir_circuit.gz -o ./proofs
+```
+
+### Barretenberg generate verification key
+
+```bash
+# Generates a verification key to verify the proof
+bb write_vk -b ./target/custom_noir_circuit.json -o ./verification_keys
+```
+
+### Barretenberg verify proof
+
+```bash
+# Verifies the proof using the verification key
+bb verify -k ./verification_keys/vk -p ./proofs/proof
 ```
 
 ## Resources
